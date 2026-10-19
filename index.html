@@ -3,45 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tank Metrics — 5 New Reels</title>
+<title>Tank Metrics — Reels</title>
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:24px;
-       padding:34px 16px;background:linear-gradient(160deg,#0A0A0E,#020204);
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:30px;
+       padding:26px 14px 60px;background:linear-gradient(160deg,#0A0A0E,#020204);
        font-family:'Segoe UI',Helvetica Neue,Arial,sans-serif;color:#E7E9EF}
-  h1{font-size:17px;letter-spacing:3px;color:#FAB802;margin:0;text-align:center}
-  p.note{margin:0;font-size:12.5px;color:#8B8F9C;text-align:center;max-width:660px;line-height:1.6}
-  .strip{height:6px;width:230px;display:flex;border-radius:3px;overflow:hidden}
-  .strip span{flex:1}
-  .grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;max-width:1100px}
-  .opt{width:330px;display:flex;flex-direction:column;gap:12px;align-items:center;background:#0E0F14;
-       border:1px solid #23242F;border-radius:16px;padding:16px;box-shadow:0 16px 44px rgba(0,0,0,.5)}
-  .num{font-size:12px;letter-spacing:2px;color:#A7AAB4;font-weight:700;text-transform:uppercase}
-  video{width:100%;border-radius:12px;border:1px solid #23242F}
-  img.thumb{width:100%;border-radius:12px;border:1px solid #23242F}
-  .btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-  a.dl{padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;
-       background:linear-gradient(135deg,#1678FD,#000E9B);color:#fff}
-  a.dl.alt{background:linear-gradient(135deg,#FAB802,#F0342B);color:#0A0A0E}
-  .capbox{width:100%;background:#0B0C11;border:1px solid #1C1D26;border-radius:12px;overflow:hidden}
-  .caphead{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #1C1D26}
-  .caplabel{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#A7AAB4;font-weight:600}
-  .copyicon{display:inline-flex;align-items:center;cursor:pointer;border:none;
-            background:linear-gradient(135deg,#1678FD,#000E9B);color:#fff;padding:8px 12px;border-radius:9px;font-weight:700;font-size:12px}
-  .copyicon.copied{background:linear-gradient(135deg,#21A542,#1678FD)}
-  textarea{width:100%;height:170px;resize:none;border:none;outline:none;background:transparent;color:#C9CBD6;
-           padding:12px;font-family:inherit;font-size:12.5px;line-height:1.55}
+  h1{font-size:14px;letter-spacing:3px;color:#FAB802;margin:0;text-align:center}
+  .grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;max-width:1060px}
+  .card{width:330px;background:#0E0F14;border:1px solid #23242F;border-radius:18px;padding:12px;
+        box-shadow:0 16px 44px rgba(0,0,0,.5)}
+  video{width:100%;display:block;border-radius:12px;background:#000;cursor:pointer}
+  .cap{margin-top:12px;position:relative}
+  textarea{width:100%;height:150px;resize:none;border:1px solid #1C1D26;border-radius:12px;
+           background:#0B0C11;color:#C9CBD6;padding:12px 46px 12px 12px;outline:none;
+           font-family:inherit;font-size:12.5px;line-height:1.55}
+  .copy{position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;justify-content:center;
+        width:34px;height:34px;cursor:pointer;border:none;border-radius:9px;
+        background:linear-gradient(135deg,#1678FD,#000E9B);color:#fff}
+  .copy.copied{background:linear-gradient(135deg,#21A542,#1678FD)}
 </style>
 </head>
 <body>
-  <div class="strip"><span style="background:#21A542"></span><span style="background:#1678FD"></span>
-    <span style="background:#FAB802"></span><span style="background:#F0342B"></span><span style="background:#000E9B"></span></div>
-  <h1>5 NEW REELS — FRESH CAPTIONS</h1>
-  <p class="note">Sourced from this week's Bengaluru/India startup news: Simple Energy's ₹1,750 Cr round, deal-count slowdown, SiMa.ai chips, UPI GST, and the $10.3B funding map.</p>
+  <h1>TANK METRICS — REELS</h1>
   <div class="grid" id="grid"></div>
 <script>
-const OPTIONS=[
- {n:"Reel 1 · Giant Stat",file:"tankmetrics-reel23-music.mp4",cover:"tankmetrics-reel23.png",thumb:"tankmetrics-reel23-thumb.png",music:"Music 1",
+const REELS=[
+ {file:"tankmetrics-reel23-music.mp4",thumb:"tankmetrics-reel23-thumb.png",
   cap:`1750 crore ev funding
 
 
@@ -52,8 +40,7 @@ simple energy, ev, funding, bangalore, bengaluru, startup, crore, series c, valu
 
 
 content: showing simple energy's 1750 crore series c round like this`},
-
- {n:"Reel 2 · Diagonal Split",file:"tankmetrics-reel24-music.mp4",cover:"tankmetrics-reel24.png",thumb:"tankmetrics-reel24-thumb.png",music:"Music 2",
+ {file:"tankmetrics-reel24-music.mp4",thumb:"tankmetrics-reel24-thumb.png",
   cap:`startup funding slowdown
 
 
@@ -64,8 +51,7 @@ funding, startup, deals, investors, unit economics, burn rate, runway, valuation
 
 
 content: showing why deals fell 13% and investors fell 24% this quarter like this`},
-
- {n:"Reel 3 · Floating Card",file:"tankmetrics-reel25-music.mp4",cover:"tankmetrics-reel25.png",thumb:"tankmetrics-reel25-thumb.png",music:"Music 1",
+ {file:"tankmetrics-reel25-music.mp4",thumb:"tankmetrics-reel25-thumb.png",
   cap:`bengaluru ai chip funding
 
 
@@ -76,8 +62,7 @@ sima.ai, ai chips, deeptech, funding, bengaluru, bangalore, startup, series c, m
 
 
 content: showing 150 million dollars into bengaluru ai chips like this`},
-
- {n:"Reel 4 · Bar Chart",file:"tankmetrics-reel26-music.mp4",cover:"tankmetrics-reel26.png",thumb:"tankmetrics-reel26-thumb.png",music:"Music 2",
+ {file:"tankmetrics-reel26-music.mp4",thumb:"tankmetrics-reel26-thumb.png",
   cap:`gst on upi from october
 
 
@@ -88,8 +73,7 @@ gst, upi, merchant, margin, pricing, small business, msme, tax, profit, founder,
 
 
 content: showing how 18% gst on upi changes merchant margins like this`},
-
- {n:"Reel 5 · Orbit Rings",file:"tankmetrics-reel27-music.mp4",cover:"tankmetrics-reel27.png",thumb:"tankmetrics-reel27-thumb.png",music:"Music 1",
+ {file:"tankmetrics-reel27-music.mp4",thumb:"tankmetrics-reel27-thumb.png",
   cap:`bengaluru funding map
 
 
@@ -102,23 +86,17 @@ funding, bengaluru, bangalore, startup, india, 43 percent, valuation, founder, r
 content: showing how 43% of india's startup money went to one city like this`}
 ];
 const grid=document.getElementById('grid');
-OPTIONS.forEach((o,i)=>{const el=document.createElement('div');el.className='opt';
- el.innerHTML=`<div class="num">${o.n} · ${o.music}</div>
- <video src="${o.file}" autoplay loop muted playsinline controls></video>
- <img class="thumb" src="${o.thumb}" alt="thumbnail" loading="lazy">
- <div class="btns"><a class="dl" href="${o.file}" download>Download MP4 🎵</a>
- <a class="dl alt" href="${o.cover}" download>Cover</a>
- <a class="dl" style="background:linear-gradient(135deg,#21A542,#1678FD)" href="${o.thumb}" download>Thumbnail 9:16</a></div>
- <div class="capbox"><div class="caphead"><span class="caplabel">Caption — tap to copy</span>
- <button class="copyicon" data-i="${i}" onclick="copyCaption(${i})">
+REELS.forEach((o,i)=>{const el=document.createElement('div');el.className='card';
+ el.innerHTML=`<video src="${o.file}" poster="${o.thumb}" playsinline controls preload="metadata"></video>
+ <div class="cap"><textarea id="cap${i}" readonly>${o.cap}</textarea>
+ <button class="copy" data-i="${i}" onclick="copyCap(${i})" title="Copy caption">
  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
- </button></div><textarea id="cap${i}" readonly>${o.cap}</textarea></div>`;
+ </button></div>`;
  grid.appendChild(el);});
-async function copyCaption(i){const ta=document.getElementById('cap'+i);const btn=document.querySelector(`.copyicon[data-i="${i}"]`);
+async function copyCap(i){const ta=document.getElementById('cap'+i);const b=document.querySelector(`.copy[data-i="${i}"]`);
  try{await navigator.clipboard.writeText(ta.value);}catch(e){ta.removeAttribute('readonly');ta.select();document.execCommand('copy');ta.setAttribute('readonly','');window.getSelection().removeAllRanges();}
- btn.classList.add('copied');btn.innerHTML='✓';
- setTimeout(()=>{btn.classList.remove('copied');
- btn.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>';},1500);}
+ b.classList.add('copied');b.innerHTML='✓';setTimeout(()=>{b.classList.remove('copied');
+ b.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>';},1500);}
 </script>
 </body>
 </html>
