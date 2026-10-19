@@ -14,6 +14,11 @@
   .card{width:330px;background:#0E0F14;border:1px solid #23242F;border-radius:18px;padding:12px;
         box-shadow:0 16px 44px rgba(0,0,0,.5)}
   video{width:100%;display:block;border-radius:12px;background:#000;cursor:pointer}
+  .btns{display:flex;gap:8px;margin-top:10px}
+  .btns a{flex:1;text-align:center;text-decoration:none;padding:11px 8px;border-radius:10px;
+          font-weight:700;font-size:12.5px;letter-spacing:.3px;
+          background:linear-gradient(135deg,#1678FD,#000E9B);color:#fff}
+  .btns a.alt{background:linear-gradient(135deg,#FAB802,#F0342B);color:#0A0A0E}
   .cap{margin-top:12px;position:relative}
   textarea{width:100%;height:250px;resize:none;border:1px solid #1C1D26;border-radius:12px;
            background:#0B0C11;color:#C9CBD6;padding:12px 46px 12px 12px;outline:none;
@@ -88,6 +93,8 @@ content: showing how 43% of india's startup money went to one city like this`}
 const grid=document.getElementById('grid');
 REELS.forEach((o,i)=>{const el=document.createElement('div');el.className='card';
  el.innerHTML=`<video src="${o.file}" poster="${o.thumb}" playsinline controls preload="metadata"></video>
+ <div class="btns"><a href="${o.file}" download>⬇ Download Reel</a>
+ <a class="alt" href="${o.thumb}" download>🖼 Thumbnail 9:16</a></div>
  <div class="cap"><textarea id="cap${i}" readonly>${o.cap}</textarea>
  <button class="copy" data-i="${i}" onclick="copyCap(${i})" title="Copy caption">
  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
