@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tank Metrics — New Reels</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:30px;
+       padding:26px 14px 60px;background:linear-gradient(160deg,#0A0A0E,#020204);
+       font-family:'Segoe UI',Helvetica Neue,Arial,sans-serif;color:#E7E9EF}
+  h1{font-size:14px;letter-spacing:3px;color:#FAB802;margin:0;text-align:center}
+  .grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;max-width:1060px}
+  .card{width:330px;background:#0E0F14;border:1px solid #23242F;border-radius:18px;padding:12px;
+        box-shadow:0 16px 44px rgba(0,0,0,.5)}
+  .shot{position:relative;width:100%;border-radius:12px;overflow:hidden;background:#000;
+        aspect-ratio:9/16;cursor:pointer}
+  .shot img{width:100%;height:100%;display:block;object-fit:cover}
+  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .play span{width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+             background:rgba(10,10,14,.55);border:3px solid rgba(255,255,255,.9);
+             color:#fff;font-size:26px;padding-left:6px}
+  video{width:100%;display:block;border-radius:12px;background:#000}
+  .btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .btns a{flex:1;min-width:44%;text-align:center;text-decoration:none;padding:11px 8px;border-radius:10px;
+          font-weight:700;font-size:12.5px;letter-spacing:.3px;
+          background:linear-gradient(135deg,#1678FD,#000E9B);color:#fff}
+  .btns a.alt{background:linear-gradient(135deg,#FAB802,#F0342B);color:#0A0A0E}
+  .btns a.hd{background:linear-gradient(135deg,#21A542,#0A6B28);color:#fff}
+  .cap{margin-top:12px;position:relative}
+  textarea{width:100%;height:250px;resize:none;border:1px solid #1C1D26;border-radius:12px;
+           background:#0B0C11;color:#C9CBD6;padding:12px 46px 12px 12px;outline:none;
+           font-family:inherit;font-size:12.5px;line-height:1.55}
+  .copy{position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;justify-content:center;
+        width:34px;height:34px;cursor:pointer;border:none;border-radius:9px;
+        background:linear-gradient(135deg,#1678FD,#000E9B);color:#fff}
+  .copy.copied{background:linear-gradient(135deg,#21A542,#1678FD)}
+</style>
+</head>
+<body>
+  <h1>TANK METRICS — NEW REELS</h1>
+  <div class="grid" id="grid"></div>
+<script>
+const REELS=[
+ {file:"tankmetrics-reel33-music.mp4",thumb:"tankmetrics-reel33-thumb.png",
+  cap:`29 million for enterprise ai
+
+
+#reels #foryou #trending #viral #explore #explorepage #ai #startup #india #funding #business #technology
+
+
+rapidcanvas, enterprise ai, ai startup, series b, vertex ventures, funding, startup, india startup, artificial intelligence, machine learning, automation, entrepreneur, founder, business, finance, investment, money, startup india, business news, startup news, technology, innovation, business ideas, finance tips, saas, tankmetrics
+
+
+content: showing enterprise ai startup rapidcanvas raising 29 million series b like this`},
+{file:"tankmetrics-reel34-music.mp4",thumb:"tankmetrics-reel34-thumb.png",
+  cap:`330 crore into electric buses
+
+
+#reels #foryou #trending #viral #explore #explorepage #ev #startup #india #funding #business #electric
+
+
+greencell mobility, ev funding, electric bus, electric mobility, ev startup, clean energy, funding, startup, india startup, green energy, entrepreneur, founder, business, finance, investment, money, crore, startup india, business news, startup news, technology, innovation, sustainability, business ideas, ev india, tankmetrics
+
+
+content: showing greencell mobility raising 330 crore for electric buses like this`},
+{file:"tankmetrics-reel35-music.mp4",thumb:"tankmetrics-reel35-thumb.png",
+  cap:`142 crore for ayurveda brand
+
+
+#reels #foryou #trending #viral #explore #explorepage #d2c #startup #india #funding #business #ayurveda
+
+
+nat habit, ayurveda, d2c brand, personal care, series c, funding, startup, india startup, beauty, skincare, entrepreneur, founder, business, finance, investment, money, crore, startup india, business news, startup news, marketing, ecommerce, business ideas, finance tips, tankmetrics
+
+
+content: showing ayurvedic d2c brand nat habit raising 142 crore series c like this`},
+{file:"tankmetrics-reel36-music.mp4",thumb:"tankmetrics-reel36-thumb.png",
+  cap:`350 crore in week three
+
+
+#reels #foryou #trending #viral #explore #explorepage #bollywood #boxoffice #drishyam3 #movies #india #entertainment
+
+
+drishyam 3, box office, bollywood, movie collection, ajay devgn, thriller, hindi movie, cinema, entertainment, film, week three, business news, movies, box office collection, bollywood news, trending, india, box office india, film industry, content, filmmaking, sequels, box office report, tankmetrics
+
+
+content: showing drishyam 3 crossing 350 crore and still running in week three like this`},
+{file:"tankmetrics-reel37-music.mp4",thumb:"tankmetrics-reel37-thumb.png",
+  cap:`new host bigg boss 20
+
+
+#reels #foryou #trending #viral #explore #explorepage #bigg boss #bollywood #tv #entertainment #india #celebrity
+
+
+bigg boss 20, rohit shetty, salman khan, weekend ka vaar, reality show, television, entertainment, bollywood, celebrity, host, tv show, trending, india, bollywood news, entertainment news, television news, celebrity news, bigg boss news, reality tv, television industry, content, filmmaking, tankmetrics
+
+
+content: showing rohit shetty hosting weekend ka vaar as salman khan skips like this`},
+];
+const grid=document.getElementById('grid');
+REELS.forEach((o,i)=>{const el=document.createElement('div');el.className='card';
+ el.innerHTML=`<div class="shot" onclick="play(this,'${o.file}')">
+   <img src="${o.thumb}" alt=""><div class="play"><span>▶</span></div></div>
+ <div class="btns"><a href="${o.file}" download>⬇ Reel 1080p</a>
+ <a class="hd" href="${o.file.replace("-music.mp4","-4k.mp4")}" download>🎬 Reel 4K</a>
+ <a class="alt" href="${o.thumb}" download>🖼 Thumbnail 9:16</a></div>
+ <div class="cap"><textarea id="cap${i}" readonly>${o.cap}</textarea>
+ <button class="copy" data-i="${i}" onclick="copyCap(${i})" title="Copy caption">
+ <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
+ </button></div>`;
+ grid.appendChild(el);});
+function play(el,file){
+ el.outerHTML=`<video src="${file}" playsinline controls autoplay preload="auto"></video>`;
+}
+async function copyCap(i){const ta=document.getElementById('cap'+i);const b=document.querySelector(`.copy[data-i="${i}"]`);
+ try{await navigator.clipboard.writeText(ta.value);}catch(e){ta.removeAttribute('readonly');ta.select();document.execCommand('copy');ta.setAttribute('readonly','');window.getSelection().removeAllRanges();}
+ b.classList.add('copied');b.innerHTML='✓';setTimeout(()=>{b.classList.remove('copied');
+ b.innerHTML='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>';},1500);}
+</script>
+</body>
+</html>
